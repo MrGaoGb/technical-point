@@ -1,0 +1,5 @@
+spring:
+  main:
+    banner-mode: console
+server:
+  port: 8888
