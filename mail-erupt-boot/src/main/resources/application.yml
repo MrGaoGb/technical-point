@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    name: test
+    url: jdbc:postgresql://192.168.10.128:5432/postgres?autosave=conservative
+    driver-class-name: org.postgresql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    generate-ddl: true
+    database: postgresql
+# 快速应用代码工具
+server:
+  port: 8080
+
+#erupt-app:
+#  # 登录几次出现验证码，值为0时表示一直需要登录验证码（1.6.1版本开始支持）
+#  verifyCodeCount: 0
+#  # 登录密码是否加密传输，特殊场景如：LADP登录可关闭该功能获取密码明文（1.6.8及以上版本支持）
+#  pwdTransferEncrypt: true
+#
+#erupt:
+#  # 是否开启csrf防御
+#  csrfInspect: true
+#  # 开启redis方式存储session，默认false，开启后需在配置文件中添加redis配置
+#  redisSession: true
+#  # 附件上传存储路径, 默认路径为：/opt/erupt-attachment
+#  uploadPath: D:/erupt/pictures
+#  # 是否保留上传文件原始名称
+#  keepUploadFileName: false
+#  # 登录session时长（redisSession为true时有效）
+#  upms.expireTimeByLogin: 60
+#  # 是否开启任务调度（导入erupt-job时有效）
+#  job.enable: true
+#  # 是否记录操作日志，默认true，该功能开启后可在【系统管理 → 操作日志】中查看操作日志
+#  security.recordOperateLog: true
+#  # 设置具体哪些包被jackson消息转化而不是gson
+#  jacksonHttpMessageConvertersPackages:
+#    - org.ssssssss
+
+magic-api:
+  web: /magic/web
+  # 接口配置文件存放路径
+#  resource.location: D:/erupt/magic-script
