@@ -8,7 +8,7 @@ import com.pc.framework.spring.framework.Component;
  * @date: 2021/6/13 17:19
  * @description:
  */
-@Component
+@Component("myBeanPostProcessor")
 public class MyBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) {
