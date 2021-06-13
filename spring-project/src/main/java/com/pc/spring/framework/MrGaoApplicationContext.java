@@ -29,6 +29,8 @@ public class MrGaoApplicationContext {
     public MrGaoApplicationContext(Class configClazz) {
         this.configClazz = configClazz;
 
+        //解析配置类 ComponentScan注解 -> 扫描路径 -> BeanDefinition 对象 -> 存入BeanDefinitionMap中
+
         //scan  拿到当前的主配置类之后需要进行扫描 => 把Bean对象存储到BeanDefinitionMap中
         scanMainConfigClazz(configClazz);
 
