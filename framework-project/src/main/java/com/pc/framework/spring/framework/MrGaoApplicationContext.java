@@ -38,7 +38,7 @@ public class MrGaoApplicationContext {
             String beanName = entry.getKey();
             BeanDefinition beanDefinition = entry.getValue();
             if (beanDefinition.getScope().equals(BeanDefinition.SCOPE_SINGLETON)) {
-                Object bean = createBean(beanDefinition);
+                Object bean = createBean(beanName, beanDefinition);
                 singletonObjects.put(beanName, bean);
             }
         }
@@ -101,7 +101,7 @@ public class MrGaoApplicationContext {
      * @param beanDefinition
      * @return
      */
-    public Object createBean(BeanDefinition beanDefinition) {
+    public Object createBean(String beanName, BeanDefinition beanDefinition) {
         Class clazz = beanDefinition.getClazz();
         try {
             Object newInstance = clazz.getDeclaredConstructor().newInstance();
@@ -111,6 +111,11 @@ public class MrGaoApplicationContext {
                     f.setAccessible(true);
                     f.set(newInstance, bean);
                 }
+            }
+
+            if (newInstance instanceof BeanNameAware) {
+                //设置创建Bean的beanName值
+                ((BeanNameAware) newInstance).setBeanName(beanName);
             }
 
             return newInstance;
@@ -140,7 +145,7 @@ public class MrGaoApplicationContext {
                 return instance;
             } else {
                 //创建一个多例Bean
-                Object bean = createBean(beanDefinition);
+                Object bean = createBean(beanName, beanDefinition);
                 return bean;
             }
         } else {
