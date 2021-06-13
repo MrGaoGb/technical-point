@@ -105,7 +105,6 @@ public class MrGaoApplicationContext {
         Class clazz = beanDefinition.getClazz();
         try {
             Object newInstance = clazz.getDeclaredConstructor().newInstance();
-            //此处存在bug.....待修复
             for (Field f : clazz.getDeclaredFields()) {
                 if (f.isAnnotationPresent(Autowired.class)) {
                     Object bean = getBean(f.getName());
