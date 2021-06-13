@@ -113,9 +113,16 @@ public class MrGaoApplicationContext {
                 }
             }
 
+            //Aware回调
             if (newInstance instanceof BeanNameAware) {
                 //设置创建Bean的beanName值
                 ((BeanNameAware) newInstance).setBeanName(beanName);
+            }
+
+            //初始化
+            if (newInstance instanceof InitializingBean) {
+                //设置创建Bean的beanName值
+                ((InitializingBean) newInstance).afterPropertiesSet();
             }
 
             return newInstance;
