@@ -1,8 +1,8 @@
-package com.pc.spring.test;
+package com.pc.framework.spring.test;
 
-import com.pc.spring.config.AppConfig;
-import com.pc.spring.framework.MrGaoApplicationContext;
-import com.pc.spring.service.UserService;
+import com.pc.framework.spring.config.AppConfig;
+import com.pc.framework.spring.service.UserService;
+import com.pc.framework.spring.framework.MrGaoApplicationContext;
 
 /**
  * @description: 测试自定义ApplicationContext

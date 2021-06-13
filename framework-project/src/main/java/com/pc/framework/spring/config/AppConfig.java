@@ -1,6 +1,6 @@
-package com.pc.spring.config;
+package com.pc.framework.spring.config;
 
-import com.pc.spring.framework.ComponentScan;
+import com.pc.framework.spring.framework.ComponentScan;
 
 /**
  * @description: 主配置类

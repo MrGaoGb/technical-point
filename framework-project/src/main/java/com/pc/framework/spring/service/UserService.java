@@ -1,8 +1,7 @@
-package com.pc.spring.service;
+package com.pc.framework.spring.service;
 
-import com.pc.spring.framework.Autowired;
-import com.pc.spring.framework.Component;
-import com.pc.spring.framework.Scope;
+import com.pc.framework.spring.framework.Autowired;
+import com.pc.framework.spring.framework.Component;
 
 /**
  * @description: 用户服务Service

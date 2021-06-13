@@ -1,6 +1,6 @@
-package com.pc.spring.service;
+package com.pc.framework.spring.service;
 
-import com.pc.spring.framework.Component;
+import com.pc.framework.spring.framework.Component;
 
 /**
  * @description: 订单Service

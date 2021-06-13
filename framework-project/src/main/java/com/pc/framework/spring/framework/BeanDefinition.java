@@ -1,4 +1,4 @@
-package com.pc.spring.framework;
+package com.pc.framework.spring.framework;
 
 /**
  * @description: Bean自定义对象

@@ -1,4 +1,4 @@
-package com.pc.spring.framework;
+package com.pc.framework.spring.framework;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,15 +6,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @description: 依赖注入标记注解
+ * @description: 扫描类注解
  * @author: Mr.Gao
- * @create: 2021-05-11 22:27
+ * @create: 2021-05-11 22:18
  **/
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Component {
+public @interface ComponentScan {
     /**
-     * 用来标记当前类的别名
+     * 指定扫描包路径
      *
      * @return
      */

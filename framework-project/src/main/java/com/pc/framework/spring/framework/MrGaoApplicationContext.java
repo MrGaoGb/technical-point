@@ -1,10 +1,9 @@
-package com.pc.spring.framework;
+package com.pc.framework.spring.framework;
 
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -109,8 +108,8 @@ public class MrGaoApplicationContext {
             //此处存在bug.....待修复
             for (Field f : clazz.getDeclaredFields()) {
                 if (f.isAnnotationPresent(Autowired.class)) {
-                    f.setAccessible(true);
                     Object bean = getBean(f.getName());
+                    f.setAccessible(true);
                     f.set(newInstance, bean);
                 }
             }
