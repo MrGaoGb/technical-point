@@ -10,7 +10,7 @@ import com.pc.framework.spring.framework.Component;
  * @create: 2021-05-11 22:12
  **/
 @Component("userService")
-public class UserService implements BeanNameAware {
+public class UserService {
 
     @Autowired
     private OrderService orderService;
@@ -19,14 +19,23 @@ public class UserService implements BeanNameAware {
      */
     private String beanName;
 
-    @Override
-    public void setBeanName(String name) {
-        beanName = name;
+    public void setBeanName(String beanName) {
+        this.beanName = beanName;
     }
+
+    /**
+     * implements BeanNameAware
+     *
+     * @param name
+     * @Override public void setBeanName(String name) {
+     * beanName = name;
+     * }
+     */
 
 
     public void test() {
         System.out.println(orderService);
+        System.out.println(beanName);
     }
 
 

@@ -4,6 +4,8 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -22,6 +24,8 @@ public class MrGaoApplicationContext {
      * 装载bean定义信息
      */
     private ConcurrentHashMap<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>(256);
+
+    private List<BeanPostProcessor> beanPostProcessorList = new ArrayList<>();
 
     private Class configClazz;
 
@@ -71,6 +75,13 @@ public class MrGaoApplicationContext {
                         try {
                             Class<?> aClass = classLoader.loadClass(clazzNamePath);
                             if (aClass.isAnnotationPresent(Component.class)) {
+
+                                //初始化
+                                if (BeanPostProcessor.class.isAssignableFrom(aClass)) {
+                                    BeanPostProcessor beanPostProcessor = (BeanPostProcessor) aClass.getDeclaredConstructor().newInstance();
+                                    beanPostProcessorList.add(beanPostProcessor);
+                                }
+
                                 Component componentAnnotation = aClass.getDeclaredAnnotation(Component.class);
                                 String beanName = componentAnnotation.value();
                                 BeanDefinition beanDefinition = new BeanDefinition();
@@ -83,7 +94,13 @@ public class MrGaoApplicationContext {
                                 }
                                 beanDefinitionMap.put(beanName, beanDefinition);
                             }
-                        } catch (ClassNotFoundException e) {
+                        } catch (ClassNotFoundException | NoSuchMethodException e) {
+                            e.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InstantiationException e) {
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
                             e.printStackTrace();
                         }
                     }
@@ -119,10 +136,20 @@ public class MrGaoApplicationContext {
                 ((BeanNameAware) newInstance).setBeanName(beanName);
             }
 
+            //初始化前执行
+            for (BeanPostProcessor beanPostProcessor : beanPostProcessorList) {
+                beanPostProcessor.postProcessBeforeInitialization(newInstance,beanName);
+            }
+
             //初始化
             if (newInstance instanceof InitializingBean) {
                 //设置创建Bean的beanName值
                 ((InitializingBean) newInstance).afterPropertiesSet();
+            }
+
+            //初始化后执行
+            for (BeanPostProcessor beanPostProcessor : beanPostProcessorList) {
+                beanPostProcessor.postProcessAfterInitialization(newInstance,beanName);
             }
 
             return newInstance;
