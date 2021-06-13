@@ -7,6 +7,6 @@ import com.pc.framework.spring.framework.ComponentScan;
  * @author: Mr.Gao
  * @create: 2021-05-11 22:18
  **/
-@ComponentScan("com.pc.spring.service")
+@ComponentScan("com.pc.framework.spring.service")
 public class AppConfig {
 }
