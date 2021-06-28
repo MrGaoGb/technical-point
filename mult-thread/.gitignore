@@ -1,4 +1,3 @@
-src/main/java/com/gaogba/thread/cas/CAS原理学习.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

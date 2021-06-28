@@ -3,7 +3,7 @@
 ![img_5.png](img_5.png)
 
 #### 在增加synchronized关键字之后，主要代码为
-```` 
+``` 
 0 new #2 <com/gaogba/thread/entity/User>
 3 dup
 4 invokespecial #3 <com/gaogba/thread/entity/User.<init>>
@@ -31,10 +31,10 @@
 46 aload_3
 47 athrow
 48 return
-````
+```
 
 #### 没有加synchronized关键字情况下，类字节码文件主要代码为
-````
+```
  0 new #2 <com/gaogba/thread/entity/User>
  3 dup
  4 invokespecial #3 <com/gaogba/thread/entity/User.<init>>
@@ -45,7 +45,7 @@
 15 invokevirtual #6 <org/openjdk/jol/info/ClassLayout.toPrintable>
 18 invokevirtual #7 <java/io/PrintStream.println>
 21 return
-````
+```
 
 #### 因此synchronized的底层实现
 * 1、给关键代码增加synchronized锁
