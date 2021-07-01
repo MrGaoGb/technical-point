@@ -30,3 +30,26 @@
 > 原因对象创建分成三步:1.申请内存 2.设置默认初始值 3、建立关联。
 ![img_16.png](img_16.png)
 ![img_17.png](img_17.png)
+
+#### 内存屏障概念
+![img_19.png](img_19.png)
+
+![img_20.png](img_20.png)
+
+![img_21.png](img_21.png)
+
+![img_22.png](img_22.png)
+
+#### 强引用
+
+#### 软引用
+![img_23.png](img_23.png)
+
+#### 弱引用
+![img_24.png](img_24.png)
+
+#### 虚引用
+* 作用:管理对外内存
+![img_25.png](img_25.png)
+  
+##### P8
