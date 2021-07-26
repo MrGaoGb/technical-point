@@ -1,5 +1,6 @@
 spring:
   main:
     banner-mode: console
+#    allow-bean-definition-overriding: true
 server:
   port: 8888

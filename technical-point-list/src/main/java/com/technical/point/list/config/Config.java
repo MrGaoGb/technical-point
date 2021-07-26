@@ -15,15 +15,15 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
     @Bean
-    public StudentService studentService(){
+    public StudentService studentService1(){
         return new StudentService();
     }
     @Bean
-    public TeacherService teacherService(){
+    public TeacherService teacherService1(){
         return new TeacherService();
     }
     @Bean
-    public PersonTestService personTestService(){
+    public PersonTestService personTestService1(){
         return new PersonTestService();
     }
 }
