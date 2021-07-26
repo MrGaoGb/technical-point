@@ -22,4 +22,8 @@ public class UserInfoPo {
     private String password;
 
     private Integer validStatus;
+
+    private String address;
+
+    private String phoneNo;
 }
