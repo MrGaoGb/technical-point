@@ -1,5 +1,6 @@
 package com.technical.point.list.test.queue;
 
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -17,28 +18,28 @@ import java.util.concurrent.TimeUnit;
  */
 public class SynchronousQueueTest {
     public static void main(String[] args) {
-        SynchronousQueue<String> synchronousQueue = new SynchronousQueue();
+        BlockingQueue<String> blockingQueue = new SynchronousQueue();
 
         //一个线程存元素
         new Thread(() -> {
             //添加元素1
             try {
                 System.out.println(Thread.currentThread().getName() + "=> put 1");
-                synchronousQueue.put("1");
+                blockingQueue.put("1");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //添加元素2
             try {
                 System.out.println(Thread.currentThread().getName() + "=> put 2");
-                synchronousQueue.put("2");
+                blockingQueue.put("2");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //添加元素3
             try {
                 System.out.println(Thread.currentThread().getName() + "=> put 3");
-                synchronousQueue.put("3");
+                blockingQueue.put("3");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -49,21 +50,21 @@ public class SynchronousQueueTest {
             //获取元素1
             try {
                 TimeUnit.SECONDS.sleep(2);
-                System.out.println(synchronousQueue.take());
+                System.out.println(blockingQueue.take());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //获取元素2
             try {
                 TimeUnit.SECONDS.sleep(2);
-                System.out.println(synchronousQueue.take());
+                System.out.println(blockingQueue.take());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //获取元素3
             try {
                 TimeUnit.SECONDS.sleep(2);
-                System.out.println(synchronousQueue.take());
+                System.out.println(blockingQueue.take());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
