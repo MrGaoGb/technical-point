@@ -1,5 +1,6 @@
 package com.technical.point.list.easyexcel;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,10 +15,10 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 public class Student implements Serializable {
-    @JsonProperty("用户名称")
+    @ExcelProperty(value = "用户名称", order = 1)
     private String userName;
-    @JsonProperty("年龄")
+    @ExcelProperty(value = "年龄", order = 3)
     private Integer age;
-    @JsonProperty("密码")
+    @ExcelProperty(value = "密码", order = 2)
     private String password;
 }

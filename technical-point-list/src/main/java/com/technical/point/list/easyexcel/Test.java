@@ -20,5 +20,7 @@ public class Test {
         EasyExcel.write("D:\\workspace\\gaogba\\technical-point\\" + "export_" + System.currentTimeMillis() + ".xlsx", Student.class)
                 .sheet("学生系统")
                 .doWrite(students);
+
+
     }
 }
