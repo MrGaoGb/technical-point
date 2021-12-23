@@ -1,9 +1,6 @@
 package com.technical.point.list.test.fockjoin;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
-import java.util.concurrent.RecursiveTask;
+import java.util.concurrent.*;
 import java.util.stream.LongStream;
 
 /**
@@ -20,8 +17,8 @@ public class ForkJoinTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         //test1();//按照普通计算的方式执行 num=2000000001000000000 ,耗时:9217ms
-        //test2();//采用ForkJoin方式 num=2000000001000000000 ,耗时:8038ms
-        test3();//采用Stream方式计算 num=2000000001000000000 ,耗时:286ms 前面两种都是DD
+        test2();//采用ForkJoin方式 num=2000000001000000000 ,耗时:8038ms
+        //test3();//采用Stream方式计算 num=2000000001000000000 ,耗时:286ms 前面两种都是DD
     }
 
     /**
@@ -49,6 +46,8 @@ public class ForkJoinTest {
         MyForkJoinTask myForkJoinTask1 = new MyForkJoinTask(1L, 20_0000_0000L);
         final ForkJoinTask<Long> submit = forkJoinPool.submit(myForkJoinTask1);
         final Long num = submit.get();
+        forkJoinPool.shutdown();
+        System.out.println(forkJoinPool.getPoolSize());
         final long end = System.currentTimeMillis();
         System.out.println("test2 num=" + num + " ,耗时:" + (end - begin) + "ms");
     }
@@ -97,6 +96,12 @@ class MyForkJoinTask extends RecursiveTask<Long> {
             for (Long index = this.startNum; index <= this.endNum; index++) {
                 totalValue += index;
             }
+//            try {
+//                //延时1s
+//                TimeUnit.SECONDS.sleep(1);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
             return totalValue;
         } else {
             // 否则再进行任务拆分，拆分成两个任务 此处相当于递归 调用(核裂变 1 -> 2 -> 4 -> 8......)
