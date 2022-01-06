@@ -12,11 +12,11 @@ public class StackParamTest {
         //返回JVM初始化总内存量
         final long total = Runtime.getRuntime().totalMemory();
 
-        //max=3621MB ~= 4G
-        System.out.println("max=" + max / (double) 1024 / 1024 + "MB");
-        //total=245MB
-        System.out.println("total=" + total / (double) 1024 / 1024 + "MB");
+        //max=3621M ~= 4G 约等于1/4
+        System.out.println("max=" + max / (double) 1024 / 1024 + "M");
+        //total=245M 0.0155029296875  0.015625 约等于64分之1
+        System.out.println("total=" + total / (double) 1024 / 1024 + "M");
 
-        //默认情况下：分配的最大内存是电脑的 1/4
+        //默认情况下：分配的最大内存是电脑的 1/4 ，初始化总内存量为1/64
     }
 }
