@@ -44,15 +44,16 @@ public class TestFuture {
             return 10248;
         });
         System.out.println("继续执行其他业务");
-        System.out.println("执行结果: " + completableFuture.whenComplete((t, u) -> {
+        final CompletableFuture<Integer> exceptionally = completableFuture.whenComplete((t, u) -> {
             //当线程正常执行时
             System.out.println("t=" + t);
             System.out.println("u=" + u);
         }).exceptionally((e) -> {
             //当线程执行异常时 会拿到错误异常信息
-            System.out.println("执行异常时" + e.getMessage()+" 异常状态码: 11111");
-            return 11111;
-        }).get());
+            System.out.println("执行异常时" + e.getMessage() + " 异常状态码: 11111");
+            return null;
+        });
+        System.out.println(CompletableFuture.anyOf(exceptionally).get());
         /**
          * 有返回值的CompletableFuture
          * >>>>>>>　ForkJoinPool.commonPool-worker-1 执行完了
