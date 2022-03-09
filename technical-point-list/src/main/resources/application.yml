@@ -5,6 +5,24 @@ spring:
     host: 192.168.1.118
     password:
     port: 6379
+  rabbitmq: #MQ基本配置
+    host: 10.46.101.10
+    port: 5672
+    username: kuaiq
+    password: kuaiq
+    publisher-returns: true
+    publisher-confirms: true
+
+mq: #参数配置
+  queueBinding:
+    bussinessQueue:
+      noActiveQueueName: prod_no_active_queue
+      noActiveExchangeName: prod_no_active_exchange
+      noActiveRoutingKey: prod_no_active_routing_key
+    dlQueue:
+      dlQueueName: dead_letter_queue
+      dlExchangeName: dead_letter_exchange
+      dlRoutingKey: dead_letter_routing_key
 #    allow-bean-definition-overriding: true
 server:
   port: 8888
