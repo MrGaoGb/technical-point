@@ -13,6 +13,6 @@ public class Test {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(ScanConfig.class);
         PersonTestService personService = context.getBean(PersonTestService.class);
-        personService.getBeanName("studentService");
+        personService.getBeanName("0002TeacherService");
     }
 }

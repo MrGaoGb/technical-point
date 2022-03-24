@@ -14,4 +14,14 @@ public class StudentService implements PersonService {
     public void doWork() {
         System.out.println("学生学习........!");
     }
+
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("学生Service >>>> setBeanName() >>> "+name);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("学生Service >>> afterPropertiesSet()");
+    }
 }

@@ -8,10 +8,20 @@ import org.springframework.stereotype.Service;
  * @author: Mr.Gao
  * @create: 2021-04-21 16:30
  **/
-@Service
+@Service("0002TeacherService")
 public class TeacherService implements PersonService {
     @Override
     public void doWork() {
         System.out.println("教师工作.........!");
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        System.out.println("教师Service >>> setBeanName() >>>> "+name);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("教师Service >>> afterPropertiesSet()");
     }
 }
