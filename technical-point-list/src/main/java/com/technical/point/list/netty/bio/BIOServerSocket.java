@@ -1,4 +1,4 @@
-package com.technical.point.list.netty;
+package com.technical.point.list.netty.bio;
 
 import java.io.IOException;
 import java.io.InputStream;
