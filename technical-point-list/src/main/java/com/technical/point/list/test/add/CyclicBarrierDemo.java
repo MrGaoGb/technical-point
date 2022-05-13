@@ -14,7 +14,7 @@ import java.util.concurrent.CyclicBarrier;
 public class CyclicBarrierDemo {
     public static void main(String[] args) {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(7, () -> {
-            System.out.println("7颗龙珠机器召唤神龙!");
+            System.out.println("7颗龙珠集齐召唤神龙!");
         });
 
         for (int i = 1; i <= 7; i++) {
