@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class SemaphoreDemo {
     public static void main(String[] args) {
         //抢车位 3个线程
-        Semaphore semaphore = new Semaphore(3);
+        Semaphore semaphore = new Semaphore(1);
         for (int i = 1; i <= 6; i++) {
             new Thread(() -> {
                 try {

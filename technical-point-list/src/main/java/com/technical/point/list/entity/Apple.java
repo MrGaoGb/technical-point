@@ -1,6 +1,7 @@
 package com.technical.point.list.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -13,12 +14,14 @@ import java.math.BigDecimal;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 public class Apple {
 
     private Integer id;
     private String name;
     private BigDecimal money;
     private Integer num;
+
 
     public Apple(Integer id, String name, BigDecimal money, Integer num) {
         this.id = id;
